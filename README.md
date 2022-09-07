@@ -6,7 +6,7 @@ Integrantes:
 - Josue Singaña
 - Christian Soledispa
 
-Aplicacion lanzada  en APKPURE
+## Aplicacion lanzada  en APKPURE
 
 
 ![imagen](https://user-images.githubusercontent.com/65979995/188802804-51dd0797-2a5e-4b22-8e21-3e059ae153ff.png)
