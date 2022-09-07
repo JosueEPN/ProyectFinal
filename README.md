@@ -39,6 +39,30 @@
 ![imagen](/imgs/playstore.jpeg)
 
 
+## Sistema Web
+
+Tecnologías usadas:
+- ReactJs
+- Material Ui
+- Firebase
+### Registro de usuaario
+
+
+### Inicio de usuario
+
+### Home page 
+
+### Grupos
+
+### Cierre de sesión
+
+### Firebase
+#### Servicio de autenticación
+
+#### Base de datos
+
+
+
 
 ### MANUALES
 - `Manual de Usuario` :books:
