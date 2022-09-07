@@ -4,14 +4,11 @@ import android.annotation.SuppressLint
 import android.app.Service
 import android.content.ContentValues
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Handler
 import android.os.IBinder
 import android.service.controls.ControlsProviderService.TAG
 import android.util.Log
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.firebase.auth.FirebaseAuth
@@ -25,7 +22,7 @@ class Service : Service() {
     private lateinit var fusedLocationClient : FusedLocationProviderClient
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
-    private var Errores : Int = 1
+    private var Errores : Int = 0
     val handler = Handler()
 
 
@@ -73,11 +70,17 @@ class Service : Service() {
     @SuppressLint("MissingPermission")
     private fun getLocations() {
 
-        fusedLocationClient.lastLocation?.addOnSuccessListener{
+        fusedLocationClient.lastLocation.addOnSuccessListener{
             if(it==null)
             {
                 Toast.makeText(this, "No pudimos obtener localizacion", Toast.LENGTH_SHORT).show()
                 Errores += 1
+
+                if(Errores >4)
+                {
+                    handler.removeCallbacksAndMessages(null)
+                }
+
             }else it.apply {
                 val latitud = it.latitude
                 val longitud = it.longitude

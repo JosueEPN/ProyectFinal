@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var myadapter: Myadapter
     private lateinit var db: FirebaseFirestore
     private var Errores : Int = 0
+    private val myHandler = Handler(Looper.getMainLooper())
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -90,6 +91,8 @@ class MainActivity : AppCompatActivity() {
             Errores = 5
             stopService(intent)
             Toast.makeText(this, "Se cancelor la localizacion en segundo plano", Toast.LENGTH_SHORT).show()
+            myHandler.removeCallbacksAndMessages(null);
+            Toast.makeText(this, "Se cancelo la geolozalizacion",Toast.LENGTH_SHORT).show()
         }
 
 
@@ -100,7 +103,13 @@ class MainActivity : AppCompatActivity() {
 
     }
     private fun Repetir(){
-        val myHandler = Handler(Looper.getMainLooper())
+
+        if(Errores == 5) {
+            myHandler.removeCallbacksAndMessages(null);
+            Toast.makeText(this, "Se cancelo la geolozalizacion",Toast.LENGTH_SHORT).show()
+            return
+        }
+
 
         myHandler.post(object : Runnable {
             override fun run() {
@@ -111,10 +120,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        if(Errores == 5) {
-            myHandler.removeCallbacksAndMessages(null);
-            Toast.makeText(this, "Se cancelo la geolozalizacion",Toast.LENGTH_SHORT).show()
-        }
+
 
     }
 
