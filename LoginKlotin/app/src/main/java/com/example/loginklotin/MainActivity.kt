@@ -61,6 +61,17 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.AccesPerfil.setOnClickListener {
+
+            val intent2 = Intent(this, Service::class.java)
+            binding.lbllatitud.text = "Latitud: "
+            binding.lbllongitud.text = "Longitud: "
+            Errores = 5
+            acceso = false
+            stopService(intent2)
+            Toast.makeText(this, "Se cancelor la localizacion en segundo plano", Toast.LENGTH_SHORT).show()
+            myHandler.removeCallbacksAndMessages(null);
+            userArrayList.clear()
+            myadapter.notifyDataSetChanged()
             val intent = Intent(this, Perfil::class.java)
             startActivity(intent)
             finish()
