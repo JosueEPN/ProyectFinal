@@ -6,6 +6,13 @@ Integrantes:
 - Josue Singaña
 - Christian Soledispa
 
+## Videos
+Manual de usuario:
+https://www.youtube.com/watch?v=jRr-0DQaORw
+
+Explicación técnica del código y funcionalidad:
+https://www.youtube.com/watch?v=TOcCLWyfnJ4
+
 ## Aplicacion lanzada  en APKPURE
 
 
