@@ -36,7 +36,7 @@
 
 ### Despliegue de apk en Android o Google Store
 ### 1 Ingresar a la plataforma de Google console y  llenamos los campos respectivos para la cuenta de desarrollador:iphone:
-![imagen](/imgs/currentLocation.jpeg)
+![imagen](/imgs/playstore.jpeg)
 
 
 
