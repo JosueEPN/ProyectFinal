@@ -121,7 +121,7 @@ class SingInActivity : AppCompatActivity() {
                 val db = Firebase.firestore
 
                 db.collection("user").document(uid).set(map).addOnSuccessListener {
-                    Toast.makeText(this, "Usuario Registrado", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Ingreso correctamente", Toast.LENGTH_SHORT).show()
                 }
                     .addOnFailureListener {
                         Toast.makeText(

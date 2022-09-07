@@ -50,10 +50,12 @@ class Service : Service() {
                     }
                     postDelayed(runeable, 5000)
                 }
-        return START_STICKY
+        return super.onStartCommand(intent, flags, startId)
     }
 
     override fun onDestroy() {
+
+        Toast.makeText(this, "Se cancelo la Geolocalizacion en segundo plano", Toast.LENGTH_SHORT).show()
 
         handler.removeCallbacksAndMessages(null)
 
@@ -74,10 +76,12 @@ class Service : Service() {
             if(it==null)
             {
                 Toast.makeText(this, "No pudimos obtener localizacion", Toast.LENGTH_SHORT).show()
-                Errores += 1
 
-                if(Errores >4)
-                {
+                Errores ++
+
+
+                if(Errores == 3){
+                    Toast.makeText(this, "Active la localizacion todo el tiempo", Toast.LENGTH_SHORT).show()
                     handler.removeCallbacksAndMessages(null)
                 }
 

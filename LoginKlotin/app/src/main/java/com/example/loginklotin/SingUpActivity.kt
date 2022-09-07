@@ -41,6 +41,8 @@ class SingUpActivity : AppCompatActivity() {
             if (email.isNotEmpty() && pass.isNotEmpty() && confirmPass.isNotEmpty()) {
                 if (pass == confirmPass) {
 
+
+
                     firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
                         if (it.isSuccessful) {
 
@@ -70,7 +72,7 @@ class SingUpActivity : AppCompatActivity() {
                             startActivity(intent)
 
                         } else {
-                            Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "La clave debe ser Mayor a 6 caracteres", Toast.LENGTH_SHORT).show()
 
                         }
                     }

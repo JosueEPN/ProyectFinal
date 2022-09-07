@@ -34,7 +34,9 @@ class Perfil : AppCompatActivity() {
                 binding.Correo.setText("Correo: "+it.get("Email") as String?)
             }
 
+
         binding.singout.setOnClickListener {
+            db.collection("coord").document(uid).delete()
             firebaseAuth.signOut()
             val intent = Intent(this, SingInActivity::class.java)
             startActivity(intent)

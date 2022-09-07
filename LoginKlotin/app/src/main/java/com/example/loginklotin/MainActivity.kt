@@ -1,5 +1,6 @@
 package com.example.loginklotin
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.content.Intent
@@ -8,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.provider.Settings
 import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -35,6 +37,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var myadapter: Myadapter
     private lateinit var db: FirebaseFirestore
     private var Errores : Int = 0
+    private var acceso : Boolean = false
     private val myHandler = Handler(Looper.getMainLooper())
 
 
@@ -45,6 +48,16 @@ class MainActivity : AppCompatActivity() {
         auth = Firebase.auth
 
         setContentView(binding.root)
+
+        recyclerView = binding.recyclerView
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.setHasFixedSize(true)
+
+        userArrayList = arrayListOf()
+        myadapter = Myadapter(userArrayList)
+
+        recyclerView.adapter = myadapter
+
 
 
         binding.AccesPerfil.setOnClickListener {
@@ -58,7 +71,9 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Encendio la Geolocalizacion",Toast.LENGTH_SHORT).show()
             Errores = 0
             leerubicacionactual()
-            Repetir()
+
+
+
 
             if (allPermissionGrantedGPS() ){
                 val intent = Intent(this, Service::class.java)
@@ -70,16 +85,8 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        recyclerView = binding.recyclerView
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.setHasFixedSize(true)
 
-        userArrayList = arrayListOf()
-        myadapter = Myadapter(userArrayList)
 
-        recyclerView.adapter = myadapter
-
-        EventChangeListener()
 
 
         binding.Cancelar.setOnClickListener {
@@ -89,10 +96,12 @@ class MainActivity : AppCompatActivity() {
             binding.lbllatitud.text = "Latitud: "
             binding.lbllongitud.text = "Longitud: "
             Errores = 5
+            acceso = false
             stopService(intent)
             Toast.makeText(this, "Se cancelor la localizacion en segundo plano", Toast.LENGTH_SHORT).show()
             myHandler.removeCallbacksAndMessages(null);
-            Toast.makeText(this, "Se cancelo la geolozalizacion",Toast.LENGTH_SHORT).show()
+            userArrayList.clear()
+            myadapter.notifyDataSetChanged()
         }
 
 
@@ -104,11 +113,17 @@ class MainActivity : AppCompatActivity() {
     }
     private fun Repetir(){
 
-        if(Errores == 5) {
-            myHandler.removeCallbacksAndMessages(null);
-            Toast.makeText(this, "Se cancelo la geolozalizacion",Toast.LENGTH_SHORT).show()
-            return
-        }
+
+            if(Errores == 5 || !allPermissionGrantedGPS()) {
+                myHandler.removeCallbacksAndMessages(null);
+                Toast.makeText(this, "Se cancelo la geolozalizacion",Toast.LENGTH_SHORT).show()
+                stopService(intent)
+                Toast.makeText(this, "Se cancelor la localizacion en segundo plano", Toast.LENGTH_SHORT).show()
+                myHandler.removeCallbacksAndMessages(null);
+                return
+            }
+
+
 
 
         myHandler.post(object : Runnable {
@@ -170,10 +185,25 @@ class MainActivity : AppCompatActivity() {
             if(it==null)
             {
                 Toast.makeText(this, "No pudimos obtener localizacion",Toast.LENGTH_SHORT).show()
-                Errores += 1
+                val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
+                startActivity(intent)
+                myHandler.removeCallbacksAndMessages(null)
+                userArrayList.clear()
+                binding.lbllatitud.text = "Latitud: "
+                binding.lbllongitud.text = "Longitud: "
+
             }else it.apply {
                 val latitud = it.latitude
                 val longitud = it.longitude
+
+                if (acceso == false)
+                {
+                    EventChangeListener()
+                    Repetir()
+                    acceso = true
+                }
+
+
 
                 binding.lbllatitud.text = "Latitud: $latitud"
                 binding.lbllongitud.text = "Longitud: $longitud"
