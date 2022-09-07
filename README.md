@@ -51,6 +51,7 @@ El usuario puede registrarse vía correo, dónde se le pide su correo y contrase
 
 ### Inicio de usuario
 Una vez que el usuario se registre, puede iniciar sesión. O puede autenticarse con una cuenta de gmail.
+![imagen](/imgs/web-sigin.jpeg)
 
 ### Home page 
 El usuario autenticado es redireccionado a la vista de bienvenida 
@@ -59,6 +60,8 @@ El usuario autenticado es redireccionado a la vista de bienvenida
 ### Grupos
 Vista para que el usuario se registre en un grupo y añada a otros usuarios
 ![imagen](/imgs/web-group.jpeg)
+Modal para añadir usuarios
+![imagen](/imgs/web-modal.jpeg)
 
 ### Cierre de sesión
 Al dar click en el avatar o en su nombre se despliega la opción de cierre de sesión; redireccionándolo a la página de inicio de sesión
@@ -71,9 +74,10 @@ Usuario registrados
 
 #### Base de datos
 Datos de los usuarios
-![imagen](/imgs/web-db.jpeg)
+![imagen](/imgs/firebase-db.jpeg)
 
 ## Anexos
+### Responsividad WEB más validaciones de campos de registro e inicio de sesión
 
 ![imagen](/imgs/web-responsibidad-validaciones1.jpeg)
 ![imagen](/imgs/web-responsibidad-validaciones2.jpeg)
@@ -81,8 +85,6 @@ Datos de los usuarios
 ![imagen](/imgs/web-responsibidad-validaciones4.jpeg)
 ![imagen](/imgs/web-responsibidad-validaciones5.jpeg)
 
-
-### Responsividad WEB más validaciones de campos de registro e inicio de sesión
 ### MANUALES
 - `Manual de Usuario` :books:
 [Manual](https://youtu.be/jRr-0DQaORw)
