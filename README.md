@@ -46,21 +46,26 @@ Tecnologías usadas:
 - Material Ui
 - Firebase
 ### Registro de usuaario
-
+El usuario puede registrarse vía correo, dónde se le pide su correo y contraseña
 
 ### Inicio de usuario
+Una vez que el usuario se registre, puede iniciar sesión. O puede autenticarse con una cuenta de gmail.
 
 ### Home page 
+El usuario autenticado es redireccionado a la vista de bienvenida 
 
 ### Grupos
+Vista para que el usuario se registre en un grupo y añada a otros usuarios
 
 ### Cierre de sesión
+Al dar click en el avatar o en su nombre se despliega la opción de cierre de sesión; redireccionándolo a la página de inicio de sesión
 
 ### Firebase
 #### Servicio de autenticación
+Usuario registrados
 
 #### Base de datos
-
+Datos de los usuarios
 
 
 
