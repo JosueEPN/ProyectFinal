@@ -47,6 +47,7 @@ Tecnologías usadas:
 - Firebase
 ### Registro de usuaario
 El usuario puede registrarse vía correo, dónde se le pide su correo y contraseña
+![imagen](/imgs/web-signup.jpeg)
 
 ### Inicio de usuario
 Una vez que el usuario se registre, puede iniciar sesión. O puede autenticarse con una cuenta de gmail.
