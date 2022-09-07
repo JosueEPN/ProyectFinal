@@ -54,22 +54,35 @@ Una vez que el usuario se registre, puede iniciar sesión. O puede autenticarse 
 
 ### Home page 
 El usuario autenticado es redireccionado a la vista de bienvenida 
+![imagen](/imgs/web-home.jpeg)
 
 ### Grupos
 Vista para que el usuario se registre en un grupo y añada a otros usuarios
+![imagen](/imgs/web-group.jpeg)
 
 ### Cierre de sesión
 Al dar click en el avatar o en su nombre se despliega la opción de cierre de sesión; redireccionándolo a la página de inicio de sesión
+![imagen](/imgs/web-logout.jpeg)
 
 ### Firebase
 #### Servicio de autenticación
 Usuario registrados
+![imagen](/imgs/firebase-auth.jpeg)
 
 #### Base de datos
 Datos de los usuarios
+![imagen](/imgs/web-db.jpeg)
+
+## Anexos
+
+![imagen](/imgs/web-responsibidad-validaciones1.jpeg)
+![imagen](/imgs/web-responsibidad-validaciones2.jpeg)
+![imagen](/imgs/web-responsibidad-validaciones3.jpeg)
+![imagen](/imgs/web-responsibidad-validaciones4.jpeg)
+![imagen](/imgs/web-responsibidad-validaciones5.jpeg)
 
 
-
+### Responsividad WEB más validaciones de campos de registro e inicio de sesión
 ### MANUALES
 - `Manual de Usuario` :books:
 [Manual](https://youtu.be/jRr-0DQaORw)
