@@ -43,6 +43,7 @@ class SingUpActivity : AppCompatActivity() {
 
 
 
+
                     firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
                         if (it.isSuccessful) {
 
@@ -71,8 +72,12 @@ class SingUpActivity : AppCompatActivity() {
                             val intent = Intent(this, SingInActivity::class.java)
                             startActivity(intent)
 
-                        } else {
-                            Toast.makeText(this, "La clave debe ser Mayor a 6 caracteres", Toast.LENGTH_SHORT).show()
+                        }else if(pass.length < 6)
+                        {
+                            Toast.makeText(this, "La  contraseña minimas es de 6 Caracteres", Toast.LENGTH_SHORT).show()
+
+                        }else {
+                            Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
 
                         }
                     }
